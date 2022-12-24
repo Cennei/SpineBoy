@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class SphereMovement : MonoBehaviour
 {
-    [SerializeField] float followSpeed = 2f;
-    [SerializeField] Transform target;
+    [field: SerializeField] public StateMachine StateMachineComponent { get; private set; }
+    [field: SerializeField] public Material Material { get; private set; }
+    [field: SerializeField] public float FollowSpeed { get; private set; }
+    [field: SerializeField] public Transform Target { get; private set; }
 
-    // Update is called once per frame
+    private Vector3 Positioning;
+
     void Update()
     {
-        Vector3 Positioning = new Vector3(target.position.x - 5, target.position.y + 5, 0);
-        transform.position = Vector3.Slerp(transform.position, Positioning, followSpeed * Time.deltaTime);
-        if(target.GetComponent<StateMachine>().imFalling)
+        Positioning = new Vector3(Target.position.x - 5, Target.position.y + 5, 0);
+
+        transform.position = Vector3.Slerp(transform.position, Positioning, FollowSpeed * Time.deltaTime);
+
+        if(StateMachineComponent.imFalling)
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.red;
+            Material.color = Color.red;
         }
         else
         {
-            gameObject.GetComponent<Renderer>().material.color = Color.blue;
+            Material.color = Color.blue;
         }
     }
 }

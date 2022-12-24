@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerTestState : PlayerBaseState
 {
     public PlayerTestState(PlayerStateMachine stateMachine) : base(stateMachine) {}
+    Vector2 movement;
 
     public override void Enter()
     {
@@ -14,9 +15,7 @@ public class PlayerTestState : PlayerBaseState
 
     public override void Tick(float deltaTime)
     {
-        Vector2 movement = new Vector2();
         movement.x = stateMachine.InputReader.MovementValue.x;
-        movement.y = 0;
         stateMachine.transform.Translate(movement * stateMachine.MovementSpeed * deltaTime);
         if (movement.x != 0)
         {
@@ -29,7 +28,6 @@ public class PlayerTestState : PlayerBaseState
 
         if(!stateMachine.IsFlat())
         {
-            stateMachine.transform.Translate(1,0,0);
             stateMachine.InputReader.OnFalling();
         }
     }

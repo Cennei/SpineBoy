@@ -4,10 +4,13 @@ using UnityEngine;
 
 public abstract class StateMachine : MonoBehaviour
 {
+    [field: SerializeField] public Transform CheckPoint{ get; private set; }
+    [field: SerializeField] public float CheckPointRaius{ get; private set; }
+
     public bool imFalling;
     private State currentState;
 
-    void Update()
+    void FixedUpdate()
     {
         currentState?.Tick(Time.deltaTime);
     }
@@ -20,8 +23,8 @@ public abstract class StateMachine : MonoBehaviour
     }
     public bool IsFlat()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down);
-        if (Vector2.Reflect(Vector2.down, hit.normal) == Vector2.up)
+        RaycastHit2D hit = Physics2D.CircleCast(CheckPoint.position, CheckPointRaius, Vector2.down,0);
+        if (hit.collider != null)
         {
             return true;
         }
@@ -29,5 +32,15 @@ public abstract class StateMachine : MonoBehaviour
         {
             return false;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (CheckPoint == null)
+        {
+            return;
+        }
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(CheckPoint.position, CheckPointRaius);
     }
 }

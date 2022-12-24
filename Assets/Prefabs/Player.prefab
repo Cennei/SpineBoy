@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2985206442585170932}
   - component: {fileID: 2234205442049724938}
   - component: {fileID: 5299881055043207659}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,6 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8840394271134515941}
+  - {fileID: 8039268846284512778}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -60,6 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b76c05d045c4a0e41bf9426aa966a4a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <CheckPoint>k__BackingField: {fileID: 8039268846284512778}
+  <CheckPointRaius>k__BackingField: 0.2
+  imFalling: 0
   <InputReader>k__BackingField: {fileID: 4337035571186693633}
   <RigitBody>k__BackingField: {fileID: 2234205442049724938}
   <Animator>k__BackingField: {fileID: 4809257757379273706}
@@ -123,8 +127,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 6.33432}
-  m_Size: {x: 4.917802, y: 13.66864}
+  m_Offset: {x: 0, y: 6.5253305}
+  m_Size: {x: 3.274255, y: 13.286619}
   m_Direction: 0
 --- !u!1 &8137012341542664835
 GameObject:
@@ -139,7 +143,7 @@ GameObject:
   - component: {fileID: 5513965751359824381}
   - component: {fileID: 4809257757379273706}
   - component: {fileID: 4995175257986505520}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spine Mecanim GameObject (spineboy-pro)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -271,3 +275,34 @@ MonoBehaviour:
     useCustomMixMode: 1
     layerMixModes: 01000000
     layerBlendModes: 01000000
+--- !u!1 &8635624744882745879
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8039268846284512778}
+  m_Layer: 2
+  m_Name: PlaneCheckerLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8039268846284512778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8635624744882745879}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7466471221678321197}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -9,13 +9,14 @@ public class SphereMovement : MonoBehaviour
     [field: SerializeField] public float FollowSpeed { get; private set; }
     [field: SerializeField] public Transform Target { get; private set; }
 
-    private Vector3 Positioning;
+    private Vector3 positioningAside;
+    private Vector3 position;
 
     void Update()
     {
-        Positioning = new Vector3(Target.position.x - 5, Target.position.y + 5, 0);
+        positioningAside = new Vector3(Target.position.x - 5, Target.position.y + 5, 0);
 
-        transform.position = Vector3.Slerp(transform.position, Positioning, FollowSpeed * Time.deltaTime);
+        position = Vector3.Slerp(position, positioningAside, FollowSpeed * Time.deltaTime);
 
         if(StateMachineComponent.imFalling)
         {
